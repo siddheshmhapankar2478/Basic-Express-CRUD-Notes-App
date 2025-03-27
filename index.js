@@ -45,4 +45,27 @@ app.post("/create", (req, res) => {
   });
 });
 
+
+app.get("/edit/:oldfilename", (req, res) => {
+  const oldfilename = req.params.oldfilename;
+
+  res.render("edit", { oldfilename });
+});
+
+app.post("/edit/", (req, res) => {
+  const oldfilename = req.body.oldfilename;
+  const newfilename = req.body.newfilename;
+  const title = newfilename.trim().split(" ").join("_");
+
+  console.log({ oldfilename, newfilename, title });
+
+  fs.rename(`./files/${oldfilename}`, `./files/${title}`, (err) => {
+    if (err) console.error(err.message);
+    else {
+      console.log("Renamed File");
+      res.redirect("/");
+    }
+  });
+});
+
 app.listen(3000);

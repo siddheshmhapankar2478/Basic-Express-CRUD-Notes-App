@@ -11,7 +11,7 @@
 <body>
     <div class="w-full text-white min-h-screen bg-[#212121] p-5 flex flex-col gap-4 text-[#ececec]">
         <form action="/create" method="post">
-        <div class="main w-full flex flex-col gap-4">
+            <div class="main w-full flex flex-col gap-4">
                 <input  class="block px-5 py-2 bg-[#303030] rounded-md outline-none  w-full" type="text" placeholder="Enter title" name="title"></input>
                 <textarea class="block px-5 py-2 bg-[#303030] w-full rounded-md outline-none resize-none" placeholder="Enter Description" name="description" ></textarea>
                 <input class="w-fit bg-blue-400 px-5 py-2 rounded-md" type="submit"  value="Create Task"></input>
@@ -25,7 +25,10 @@
               <%  files.forEach((file)=>{ %>
                     <div class="card px-5 py-2 bg-[#424242] flex flex-col shadow-md rounded-lg min-w-72">
                         <h1 class="tetx-2xl"><%= file%></h1>
-                        <a class="text-[#4e8bdc] ml-auto" target="_blank" href="/file/<%=file%>">Read More</a>
+                        <div class="flex justify-between w-full">
+                            <a class="text-[#4e8bdc]" target="_blank" href="/file/<%=file%>">Read More</a>
+                            <a class="text-[#4e8bdc]" target="_blank" href="/edit/<%=file%>">Edit File Name</a>
+                        </div>
                     </div>
                 <% }) %>
             <% } %>
